@@ -86,27 +86,16 @@ class BodyContentWidget extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
-          child: ListView(
-            scrollDirection: Axis.horizontal,
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
             children: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
               IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
               IconButton(onPressed: () {}, icon: Icon(Icons.abc_outlined)),
             ],
           ),
+
+
         ),
       ],
     );
