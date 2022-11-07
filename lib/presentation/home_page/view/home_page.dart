@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/presentation/home_page/widget/category_icon_widget.dart';
 import 'package:portfolio_app/resources/app_colors.dart';
 import 'package:portfolio_app/resources/app_icons.dart';
 
@@ -17,9 +18,35 @@ class HomePage extends StatelessWidget {
         centerTitle: false,
       ),
       body: Column(
-        children: [
+        children: const [
+          SizedBox(height: 24),
           BodyContentWidget(),
+          SizedBox(height: 24),
           ScrollCategoryWidget(),
+          SearchProduct(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppColors.bottomNavBarItem,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColors.whiteColor,
+        items: [
+          BottomNavigationBarItem(
+            icon: Image.asset(AppIcons.circle),
+            label: 'Explorer',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(AppIcons.shopping),
+            label: 'Shopping',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(AppIcons.hearth),
+            label: 'Favorites',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(AppIcons.profile),
+            label: 'Profile',
+          ),
         ],
       ),
     );
@@ -67,36 +94,29 @@ class BodyContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 17, right: 33),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text(
-                'Select Category',
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 25,
-                  color: Color(0XFF010035),
-                ),
-              ),
-              Text(
-                'View all',
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 15,
-                  color: AppColors.redColor,
-                ),
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 17, right: 33),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: const [
+          Text(
+            'Select Category',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 25,
+              color: Color(0XFF010035),
+            ),
           ),
-        ),
-        const SizedBox(height: 24),
-        // ScrollCategoryWidget(),
-      ],
+          Text(
+            'View all',
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 15,
+              color: AppColors.redColor,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -111,34 +131,100 @@ class ScrollCategoryWidget extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 70,
-            height: 70,
-            decoration: const BoxDecoration(
-              color: AppColors.redColor,
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-            ),
-            child: IconButton(
+          CategoryIconWidget(
+            iconButton: IconButton(
               onPressed: () {},
               icon: Image.asset(AppIcons.phones),
             ),
+            color: AppColors.redColor,
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset(AppIcons.computer),
+          CategoryIconWidget(
+            iconButton: IconButton(
+              onPressed: () {},
+              focusColor: AppColors.redColor,
+              icon: Image.asset(AppIcons.computer),
+            ),
+            color: AppColors.whiteColor,
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset(AppIcons.health),
+          CategoryIconWidget(
+            iconButton: IconButton(
+              onPressed: () {},
+              icon: Image.asset(AppIcons.health),
+            ),
+            color: AppColors.whiteColor,
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset(AppIcons.books),
+          CategoryIconWidget(
+            iconButton: IconButton(
+              onPressed: () {},
+              icon: Image.asset(AppIcons.books),
+            ),
+            color: AppColors.whiteColor,
+          ),
+          CategoryIconWidget(
+            iconButton: IconButton(
+              onPressed: () {},
+              icon: Image.asset(AppIcons.books),
+            ),
+            color: AppColors.whiteColor,
           ),
         ],
       ),
+      //
+    );
+  }
+}
+
+class SearchProduct extends StatelessWidget {
+  const SearchProduct({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.centerRight,
+      children: [
+        Padding(
+          padding:
+              const EdgeInsets.only(left: 23, right: 82, top: 35, bottom: 25),
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: 'Search',
+              prefixIcon: const Icon(Icons.search, color: AppColors.redColor),
+              filled: true,
+              fillColor: AppColors.whiteColor,
+              hintStyle: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: Colors.grey,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+                borderSide: const BorderSide(color: AppColors.redColor),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+                borderSide: const BorderSide(color: AppColors.redColor),
+              ),
+              // icon: Icon(Icons.search, color: AppColors.redColor),
+            ),
+          ),
+        ),
+        Container(
+          width: 34,
+          height: 34,
+          margin: const EdgeInsets.only(right: 37),
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            color: AppColors.redColor,
+          ),
+          // color: AppColors.redColor,
+          child: IconButton(
+            onPressed: () {},
+            icon: Image.asset(AppIcons.menu),
+          ),
+        ),
+      ],
     );
   }
 }
