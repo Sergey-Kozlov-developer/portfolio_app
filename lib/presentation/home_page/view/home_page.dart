@@ -17,17 +17,21 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         centerTitle: false,
       ),
-      body: ListView(
+      body: Column(
         children: [
-          Column(
-            children: const [
-              SizedBox(height: 24),
-              BodyContentWidget(),
-              SizedBox(height: 24),
-              ScrollCategoryWidget(),
-              SearchProduct(),
-              HotSalesWidget(),
-            ],
+          Expanded(
+            child: ListView(
+              children: const [
+                SizedBox(height: 24),
+                BodyContentWidget(),
+                SizedBox(height: 24),
+                ScrollCategoryWidget(),
+                SearchProduct(),
+                HotSalesWidget(),
+                BestSellerWidget(),
+                GreedBestSellerWidget(),
+              ],
+            ),
           ),
         ],
       ),
@@ -37,8 +41,19 @@ class HomePage extends StatelessWidget {
         selectedItemColor: AppColors.whiteColor,
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset(AppIcons.circle),
-            label: 'Explorer',
+            icon: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(width: 20),
+                Image.asset(AppIcons.circle),
+                const SizedBox(width: 10),
+                const Text(
+                  'Explorer',
+                  style: TextStyle(color: AppColors.whiteColor),
+                ),
+              ],
+            ),
+            label: '',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(AppIcons.shopping),
@@ -282,29 +297,32 @@ class HotSalesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              'Hot sales',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 25,
-                color: AppColors.bottomNavBarItem,
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: const Text(
-                'see more',
+        Padding(
+          padding: const EdgeInsets.only(left: 21, right: 21),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Hot sales',
                 style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 15,
-                  color: AppColors.redColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 25,
+                  color: AppColors.bottomNavBarItem,
                 ),
               ),
-            ),
-          ],
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'see more',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 15,
+                    color: AppColors.redColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         Stack(
           alignment: Alignment.topLeft,
@@ -315,7 +333,7 @@ class HotSalesWidget extends StatelessWidget {
               width: 500,
               padding: const EdgeInsets.only(left: 21, right: 27),
               child: ListView(
-                shrinkWrap: true,
+                // shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 children: [
                   Image.network(
@@ -396,6 +414,91 @@ class HotSalesWidget extends StatelessWidget {
         ),
         const SizedBox(height: 10),
       ],
+    );
+  }
+}
+
+class BestSellerWidget extends StatelessWidget {
+  const BestSellerWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 21, right: 21),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            'Best seller',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 25,
+              color: AppColors.bottomNavBarItem,
+            ),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'see more',
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 15,
+                color: AppColors.redColor,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class GreedBestSellerWidget extends StatelessWidget {
+  const GreedBestSellerWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 150,
+      child: GridView.count(
+        primary: false,
+        padding: const EdgeInsets.all(20),
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        crossAxisCount: 2,
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.all(8),
+            color: Colors.teal[100],
+            child: const Text("He'd have you all unravel at the"),
+          ),
+          Container(
+            padding: const EdgeInsets.all(8),
+            color: Colors.teal[200],
+            child: const Text('Heed not the rabble'),
+          ),
+          Container(
+            padding: const EdgeInsets.all(8),
+            color: Colors.teal[300],
+            child: const Text('Sound of screams but the'),
+          ),
+          Container(
+            padding: const EdgeInsets.all(8),
+            color: Colors.teal[400],
+            child: const Text('Who scream'),
+          ),
+          Container(
+            padding: const EdgeInsets.all(8),
+            color: Colors.teal[500],
+            child: const Text('Revolution is coming...'),
+          ),
+          Container(
+            padding: const EdgeInsets.all(8),
+            color: Colors.teal[600],
+            child: const Text('Revolution, they...'),
+          ),
+        ],
+      ),
     );
   }
 }
