@@ -20,17 +20,20 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: ListView(
-              children: const [
-                SizedBox(height: 24),
-                BodyContentWidget(),
-                SizedBox(height: 24),
-                ScrollCategoryWidget(),
-                SearchProduct(),
-                HotSalesWidget(),
-                BestSellerWidget(),
-                GreedBestSellerWidget(),
-              ],
+            child: SizedBox(
+              height: double.infinity,
+              child: ListView(
+                children: const [
+                  SizedBox(height: 24),
+                  BodyContentWidget(),
+                  SizedBox(height: 24),
+                  ScrollCategoryWidget(),
+                  SearchProduct(),
+                  HotSalesWidget(),
+                  BestSellerWidget(),
+                  GreedBestSellerWidget(),
+                ],
+              ),
             ),
           ),
         ],
@@ -423,32 +426,36 @@ class BestSellerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 21, right: 21),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text(
-            'Best seller',
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 25,
-              color: AppColors.bottomNavBarItem,
-            ),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              'see more',
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 15,
-                color: AppColors.redColor,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 21, right: 21),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Best seller',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 25,
+                  color: AppColors.bottomNavBarItem,
+                ),
               ),
-            ),
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'see more',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 15,
+                    color: AppColors.redColor,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -458,8 +465,8 @@ class GreedBestSellerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150,
+    return SizedBox(
+      height: 700,
       child: GridView.count(
         primary: false,
         padding: const EdgeInsets.all(20),
