@@ -131,7 +131,8 @@ class ScrollCategoryWidget extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CategoryIconWidget(
             iconButton: IconButton(
@@ -139,6 +140,14 @@ class ScrollCategoryWidget extends StatelessWidget {
               icon: Image.asset(AppIcons.phones),
             ),
             color: AppColors.redColor,
+            text: const Text(
+              'Phones',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: AppColors.redColor,
+              ),
+            ),
           ),
           CategoryIconWidget(
             iconButton: IconButton(
@@ -147,6 +156,14 @@ class ScrollCategoryWidget extends StatelessWidget {
               icon: Image.asset(AppIcons.computer),
             ),
             color: AppColors.whiteColor,
+            text: const Text(
+              'Computer',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: AppColors.bottomNavBarItem,
+              ),
+            ),
           ),
           CategoryIconWidget(
             iconButton: IconButton(
@@ -154,6 +171,12 @@ class ScrollCategoryWidget extends StatelessWidget {
               icon: Image.asset(AppIcons.health),
             ),
             color: AppColors.whiteColor,
+            text: const Text('Health',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: AppColors.bottomNavBarItem,
+              ),),
           ),
           CategoryIconWidget(
             iconButton: IconButton(
@@ -161,6 +184,12 @@ class ScrollCategoryWidget extends StatelessWidget {
               icon: Image.asset(AppIcons.books),
             ),
             color: AppColors.whiteColor,
+            text: const Text('Books',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: AppColors.bottomNavBarItem,
+              ),),
           ),
           CategoryIconWidget(
             iconButton: IconButton(
@@ -168,6 +197,12 @@ class ScrollCategoryWidget extends StatelessWidget {
               icon: Image.asset(AppIcons.books),
             ),
             color: AppColors.whiteColor,
+            text: const Text('Books',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: AppColors.bottomNavBarItem,
+              ),),
           ),
         ],
       ),
