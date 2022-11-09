@@ -9,7 +9,8 @@ part of 'home_store.dart';
 HomeStoreList _$HomeStoreListFromJson(Map<String, dynamic> json) =>
     HomeStoreList(
       homeStore: (json['homeStore'] as List<dynamic>)
-          .map((e) => HomeStore.fromJson(e as Map<String, dynamic>))
+          .map((e) =>
+              e == null ? null : HomeStore.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
