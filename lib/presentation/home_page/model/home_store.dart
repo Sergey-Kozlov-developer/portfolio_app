@@ -8,7 +8,7 @@ part 'home_store.g.dart';
 
 @JsonSerializable()
 class HomeStoreList {
-  List<HomeStore?> homeStore;
+  List<HomeStore> homeStore;
   HomeStoreList({required this.homeStore});
 
   factory HomeStoreList.fromJson(final Map<String, dynamic> json) =>
@@ -29,12 +29,12 @@ class HomeStore {
   final bool? isBuy;
 
   HomeStore({
-    this.id,
-    this.isNew,
-    this.title,
-    this.subTitle,
-    this.picture,
-    this.isBuy,
+    required this.id,
+    required this.isNew,
+    required this.title,
+    required this.subTitle,
+    required this.picture,
+    required this.isBuy,
   });
 
   factory HomeStore.fromJson(final Map<String, dynamic> json) =>

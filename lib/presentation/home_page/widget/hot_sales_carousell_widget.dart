@@ -12,6 +12,7 @@ class HotSalesCarouselWidget extends StatefulWidget {
 
 class _HotSalesCarouselWidgetState extends State<HotSalesCarouselWidget> {
   late Future<HomeStoreList> homeStoreList;
+
   @override
   void initState() {
     super.initState();
@@ -20,93 +21,44 @@ class _HotSalesCarouselWidgetState extends State<HotSalesCarouselWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topLeft,
-      children: [
-        Container(
-          alignment: Alignment.center,
-          height: 220,
-          width: 500,
-          padding: const EdgeInsets.only(left: 21, right: 27),
-          child: ListView(
-            // shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            children: [
-              Image.network(
-                  'https://img.ibxk.com.br/2020/09/23/23104013057475.jpg?w=1120&h=420&mode=crop&scale=both'),
-              // const SizedBox(width: 10),
-              // Image.network(
-              //     'https://img.ibxk.com.br/2020/09/23/23104013057475.jpg?w=1120&h=420&mode=crop&scale=both'),
-            ],
-          ),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 35,
-              height: 35,
-              margin: EdgeInsets.only(left: 44, top: 12),
-              // color: AppColors.redColor,
-              decoration: const BoxDecoration(
-                color: AppColors.redColor,
-                borderRadius: const BorderRadius.all(Radius.circular(35)),
-              ),
-              child: const Center(
-                child: Text(
-                  'New',
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.whiteColor,
-                  ),
+    return FutureBuilder<HomeStoreList>(
+      future: homeStoreList,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+            itemCount: snapshot.data!.homeStore.length,
+            itemBuilder: (context, index) {
+              return Card(
+                child: ListTile(
+                  title: Text('${snapshot.data!.homeStore[index].title}'),
+                  subtitle: Text('${snapshot.data!.homeStore[index].subTitle}'),
+                  leading: Image.network('${snapshot.data!.homeStore[index].picture}'),
+                  isThreeLine: true,
                 ),
-              ),
-            ),
-            const SizedBox(height: 12),
-            const Padding(
-              padding: EdgeInsets.only(left: 44),
-              child: Text(
-                'IPhone 12',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.whiteColor,
-                ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 44, top: 5),
-              child: Text(
-                'Súper. Mega. Rápido.',
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.whiteColor,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 44, top: 31),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: const ButtonStyle(
-                  backgroundColor:
-                      MaterialStatePropertyAll<Color>(AppColors.whiteColor),
-                ),
-                child: const Text(
-                  'Buy now!',
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.bottomNavBarItem,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
+              );
+            },
+          );
+        } else if(snapshot.hasError){
+          return Text('d');
+        }
+        return Center(child: CircularProgressIndicator());
+      },
     );
+    // return FutureBuilder<HomeStoreList>(
+    //   future: homeStoreList,
+    //   builder: (context, snapshot) {
+    //     if (snapshot.hasData) {
+    //       return ListView.builder(
+    //           scrollDirection: Axis.horizontal,
+    //           itemCount: snapshot.data!.homeStore.length,
+    //           itemBuilder: (context, index) {
+    //             return Image.network('${snapshot.data!.homeStore[index].picture}');
+    //           });
+    //     } else if (snapshot.hasError) {
+    //       return Text('Error');
+    //     }
+    //     return Text('data');
+    //   },
+    // );
   }
 }
