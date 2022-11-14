@@ -26,22 +26,12 @@ class _HotSalesCarouselWidgetState extends State<HotSalesCarouselWidget> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return SizedBox(
-            height: 100,
+            height: 130,
+            width: 390,
             child: ListView.builder(
               itemCount: snapshot.data!.homeStore.length,
               itemBuilder: (context, index) {
-                return Card(
-                  child: ListTile(
-                    title: Text(snapshot.data!.homeStore[index].title),
-                    subtitle: Text(snapshot.data!.homeStore[index].subtitle),
-                    leading: Image.network(
-                      snapshot.data!.homeStore[index].picture,
-                      width: 100,
-                      height: 100,
-                    ),
-                    isThreeLine: true,
-                  ),
-                );
+                return Image.network(snapshot.data!.homeStore[index].picture);
               },
             ),
           );
