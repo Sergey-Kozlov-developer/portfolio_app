@@ -8,30 +8,30 @@ part of 'home_store.dart';
 
 HomeStoreList _$HomeStoreListFromJson(Map<String, dynamic> json) =>
     HomeStoreList(
-      homeStore: (json['homeStore'] as List<dynamic>)
+      homeStore: (json['home_store'] as List<dynamic>)
           .map((e) => HomeStore.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$HomeStoreListToJson(HomeStoreList instance) =>
     <String, dynamic>{
-      'homeStore': instance.homeStore,
+      'home_store': instance.homeStore,
     };
 
 HomeStore _$HomeStoreFromJson(Map<String, dynamic> json) => HomeStore(
-      id: json['id'] as int?,
-      isNew: json['isNew'] as bool?,
-      title: json['title'] as String?,
-      subTitle: json['subTitle'] as String?,
-      picture: json['picture'] as String?,
-      isBuy: json['isBuy'] as bool?,
+      id: json['id'] as int,
+      isNew: json['is_new'] as bool?,
+      title: json['title'] as String,
+      subtitle: json['subtitle'] as String,
+      picture: json['picture'] as String,
+      isBuy: json['is_buy'] as bool,
     );
 
 Map<String, dynamic> _$HomeStoreToJson(HomeStore instance) => <String, dynamic>{
       'id': instance.id,
-      'isNew': instance.isNew,
+      'is_new': instance.isNew,
       'title': instance.title,
-      'subTitle': instance.subTitle,
+      'subtitle': instance.subtitle,
       'picture': instance.picture,
-      'isBuy': instance.isBuy,
+      'is_buy': instance.isBuy,
     };

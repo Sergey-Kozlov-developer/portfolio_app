@@ -25,40 +25,31 @@ class _HotSalesCarouselWidgetState extends State<HotSalesCarouselWidget> {
       future: homeStoreList,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return ListView.builder(
-            itemCount: snapshot.data!.homeStore.length,
-            itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title: Text('${snapshot.data!.homeStore[index].title}'),
-                  subtitle: Text('${snapshot.data!.homeStore[index].subTitle}'),
-                  leading: Image.network('${snapshot.data!.homeStore[index].picture}'),
-                  isThreeLine: true,
-                ),
-              );
-            },
+          return SizedBox(
+            height: 100,
+            child: ListView.builder(
+              itemCount: snapshot.data!.homeStore.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: ListTile(
+                    title: Text(snapshot.data!.homeStore[index].title),
+                    subtitle: Text(snapshot.data!.homeStore[index].subtitle),
+                    leading: Image.network(
+                      snapshot.data!.homeStore[index].picture,
+                      width: 100,
+                      height: 100,
+                    ),
+                    isThreeLine: true,
+                  ),
+                );
+              },
+            ),
           );
-        } else if(snapshot.hasError){
-          return Text('d');
+        } else if (snapshot.hasError) {
+          return Text('Error');
         }
         return Center(child: CircularProgressIndicator());
       },
     );
-    // return FutureBuilder<HomeStoreList>(
-    //   future: homeStoreList,
-    //   builder: (context, snapshot) {
-    //     if (snapshot.hasData) {
-    //       return ListView.builder(
-    //           scrollDirection: Axis.horizontal,
-    //           itemCount: snapshot.data!.homeStore.length,
-    //           itemBuilder: (context, index) {
-    //             return Image.network('${snapshot.data!.homeStore[index].picture}');
-    //           });
-    //     } else if (snapshot.hasError) {
-    //       return Text('Error');
-    //     }
-    //     return Text('data');
-    //   },
-    // );
   }
 }

@@ -3,10 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:http/http.dart' as http;
+import 'package:equatable/equatable.dart';
 
 part 'home_store.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class HomeStoreList {
   List<HomeStore> homeStore;
   HomeStoreList({required this.homeStore});
@@ -19,20 +20,20 @@ class HomeStoreList {
 }
 
 
-@JsonSerializable()
-class HomeStore {
-  final int? id;
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+class HomeStore extends Equatable {
+  final int id;
   final bool? isNew;
-  final String? title;
-  final String? subTitle;
-  final String? picture;
-  final bool? isBuy;
+  final String title;
+  final String subtitle;
+  final String picture;
+  final bool isBuy;
 
   HomeStore({
     required this.id,
     required this.isNew,
     required this.title,
-    required this.subTitle,
+    required this.subtitle,
     required this.picture,
     required this.isBuy,
   });
@@ -41,6 +42,10 @@ class HomeStore {
       _$HomeStoreFromJson(json);
 
   Map<String, dynamic> toJson() => _$HomeStoreToJson(this);
+
+  @override
+
+  List<Object?> get props => [id,isNew,title,subtitle,picture,isBuy];
 }
 
 Future<HomeStoreList> getHomeStoreList() async {
@@ -53,3 +58,4 @@ Future<HomeStoreList> getHomeStoreList() async {
     throw Exception('Error: ${response.reasonPhrase}');
   }
 }
+
