@@ -1,7 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:portfolio_app/presentation/home_page/view/home_page.dart';
 
+
+
+class PostHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient( context){
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+  }
+}
+
 void main() {
+  HttpOverrides.global = PostHttpOverrides();
   runApp(const MyApp());
 }
 

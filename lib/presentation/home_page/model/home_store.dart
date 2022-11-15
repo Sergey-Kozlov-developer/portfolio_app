@@ -29,7 +29,7 @@ class HomeStore extends Equatable {
   final String picture;
   final bool isBuy;
 
-  HomeStore({
+  const HomeStore({
     required this.id,
     required this.isNew,
     required this.title,
