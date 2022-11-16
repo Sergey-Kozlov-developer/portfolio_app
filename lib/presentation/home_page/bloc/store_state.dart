@@ -24,14 +24,16 @@ class StoreLoadingState extends StoreState {
 class StoreLoadedState extends StoreState {
   final List<HomeStoreList> loadedHomeStore;
   final List<BestSellerList> loadedBestseller;
+  final List<StoreEntities> loadedStore;
 
   const StoreLoadedState({
     required this.loadedHomeStore,
     required this.loadedBestseller,
+    required this.loadedStore,
   });
 
   @override
-  List<Object?> get props => [loadedHomeStore, loadedBestseller];
+  List<Object?> get props => [loadedHomeStore, loadedBestseller, loadedStore];
 }
 
 // ошибка загрузки
