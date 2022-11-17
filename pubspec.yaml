@@ -45,6 +45,7 @@ dependencies:
   json_annotation: ^4.7.0
   cached_network_image: ^3.2.2
   dartz: ^0.10.1
+  get_it: ^7.2.0
 
 
 dev_dependencies:

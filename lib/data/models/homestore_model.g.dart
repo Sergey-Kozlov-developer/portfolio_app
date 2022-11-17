@@ -8,12 +8,12 @@ part of 'homestore_model.dart';
 
 HomeStoreModel _$HomeStoreModelFromJson(Map<String, dynamic> json) =>
     HomeStoreModel(
-      id: json['id'] as int,
+      id: json['id'] as int?,
       isNew: json['is_new'] as bool?,
-      title: json['title'] as String,
-      subtitle: json['subtitle'] as String,
-      picture: json['picture'] as String,
-      isBuy: json['is_buy'] as bool,
+      title: json['title'] as String?,
+      subtitle: json['subtitle'] as String?,
+      picture: json['picture'] as String?,
+      isBuy: json['is_buy'] as bool?,
     );
 
 Map<String, dynamic> _$HomeStoreModelToJson(HomeStoreModel instance) =>

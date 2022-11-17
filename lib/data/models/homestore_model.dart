@@ -6,12 +6,12 @@ part 'homestore_model.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class HomeStoreModel extends HomeStoreEntity {
   const HomeStoreModel({
-    required int id,
+    required int? id,
     required bool? isNew,
-    required String title,
-    required String subtitle,
-    required String picture,
-    required bool isBuy,
+    required String? title,
+    required String? subtitle,
+    required String? picture,
+    required bool? isBuy,
   }) : super(
           id: id,
           isNew: isNew,

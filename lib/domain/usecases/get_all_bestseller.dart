@@ -11,7 +11,7 @@ class GetAllBestsellerUseCases extends UseCase<List<BestSellerEntity>, void> {
 
   @override
   Future<Either<Failure, List<BestSellerEntity>>> call({void params}) async {
-    return await bestSellerRepository.getBestseller();
+    return await bestSellerRepository.getBestseller()!;
   }
 
 

@@ -9,6 +9,7 @@ import 'package:portfolio_app/resources/app_icons.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

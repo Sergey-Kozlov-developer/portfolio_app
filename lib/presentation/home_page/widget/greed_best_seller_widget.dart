@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_app/presentation/home_page/model/best_seller.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio_app/presentation/home_page/bloc/home_bloc.dart';
 import 'package:portfolio_app/resources/app_colors.dart';
 
 class GreedBestSellerWidget extends StatefulWidget {
@@ -10,23 +11,20 @@ class GreedBestSellerWidget extends StatefulWidget {
 }
 
 class _GreedBestSellerWidgetState extends State<GreedBestSellerWidget> {
-  late Future<BestSellerList> bestSellerList;
-
-  @override
-  void initState() {
-    super.initState();
-    bestSellerList = getBestSellerList();
-  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 138) / 2;
     final double itemWidth = size.width / 2.1;
-    return FutureBuilder<BestSellerList>(
-        future: bestSellerList,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
+    return BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          if (state is HomeLoadingState) {
+            return const Center(
+                child: CircularProgressIndicator()
+            );
+          }
+          if (state is HomeLoadedState) {
             return GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -36,18 +34,19 @@ class _GreedBestSellerWidgetState extends State<GreedBestSellerWidget> {
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
-                itemCount: snapshot.data!.bestSeller.length,
+                itemCount: state.loadedBestseller.length,
               itemBuilder: (context, index) => GridWidget(
-                  pictureUrl: snapshot.data!.bestSeller[index].picture,
-                  titleItems: snapshot.data!.bestSeller[index].title,
-                  priceWithoutDiscount: snapshot.data!.bestSeller[index].priceWithoutDiscount,
-                  discountPrice: snapshot.data!.bestSeller[index].discountPrice,
-                  isFavorites: snapshot.data!.bestSeller[index].isFavorites,
-                  id: snapshot.data!.bestSeller[index].id
+                  pictureUrl: state.loadedBestseller[index].picture,
+                  titleItems: state.loadedBestseller[index].title,
+                  priceWithoutDiscount: state.loadedBestseller[index].priceWithoutDiscount,
+                  discountPrice: state.loadedBestseller[index].discountPrice,
+                  isFavorites: state.loadedBestseller[index].isFavorites,
+                  id: state.loadedBestseller[index].id
 
               ),
                 );
-          } else if (snapshot.hasError) {
+          }
+          if (state is HomeErrorState) {
             return Text('Error');
           }
           return CircularProgressIndicator();

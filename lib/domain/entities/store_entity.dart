@@ -3,8 +3,8 @@ import 'package:portfolio_app/data/models/bestseller_model.dart';
 import 'package:portfolio_app/data/models/homestore_model.dart';
 
 class StoreEntity extends Equatable {
-  final List<HomeStoreModel> homeStore;
-  final List<BestSellerModel> bestSeller;
+  final List<HomeStoreModel>? homeStore;
+  final List<BestSellerModel>? bestSeller;
 
   const StoreEntity({
     required this.homeStore,

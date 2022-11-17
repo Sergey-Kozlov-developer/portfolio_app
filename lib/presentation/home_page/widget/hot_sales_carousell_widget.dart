@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_app/presentation/home_page/model/home_store.dart';
+import 'package:portfolio_app/presentation/home_page/bloc/home_bloc.dart';
 import 'package:portfolio_app/resources/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HotSalesCarouselWidget extends StatefulWidget {
   const HotSalesCarouselWidget({Key? key}) : super(key: key);
@@ -12,20 +13,12 @@ class HotSalesCarouselWidget extends StatefulWidget {
 }
 
 class _HotSalesCarouselWidgetState extends State<HotSalesCarouselWidget> {
-  late Future<HomeStoreList> homeStoreList;
-
-  @override
-  void initState() {
-    super.initState();
-    homeStoreList = getHomeStoreList();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<HomeStoreList>(
-      future: homeStoreList,
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        if (state is HomeLoadingState) {
           return Center(
             child: Container(
               height: 200,
@@ -38,9 +31,10 @@ class _HotSalesCarouselWidgetState extends State<HotSalesCarouselWidget> {
               ),
             ),
           );
-        } else if (snapshot.hasData) {
+        }
+        if (state is HomeLoadedState) {
           return CarouselSlider.builder(
-            itemCount: snapshot.data!.homeStore.length,
+            itemCount: state.loadedHomestore.length,
             options: CarouselOptions(
               height: 200,
               aspectRatio: 5.0,
@@ -48,16 +42,17 @@ class _HotSalesCarouselWidgetState extends State<HotSalesCarouselWidget> {
               viewportFraction: 1,
             ),
             itemBuilder: (BuildContext context, int index, _) => SliderWidget(
-              pictureUrl: snapshot.data!.homeStore[index].picture,
-              titlePhone: snapshot.data!.homeStore[index].title,
-              subtitleSuper: snapshot.data!.homeStore[index].subtitle,
-              isNew: snapshot.data!.homeStore[index].isNew ?? false,
+              pictureUrl: state.loadedHomestore[index].picture,
+              titlePhone: state.loadedHomestore[index].title,
+              subtitleSuper: state.loadedHomestore[index].subtitle,
+              isNew: state.loadedHomestore[index].isNew ?? false,
             ),
           );
-        } else if (snapshot.hasError) {
-          return Text('Error');
         }
-        return CircularProgressIndicator();
+        if (state is HomeErrorState) {
+          return const Text('Error');
+        }
+        return const CircularProgressIndicator();
       },
     );
   }

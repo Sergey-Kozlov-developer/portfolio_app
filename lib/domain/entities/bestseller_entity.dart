@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class BestSellerEntity extends Equatable {
-  final int id;
-  final bool isFavorites;
-  final int priceWithoutDiscount;
-  final int discountPrice;
-  final String picture;
-  final String title;
+  final int? id;
+  final bool? isFavorites;
+  final int? priceWithoutDiscount;
+  final int? discountPrice;
+  final String? picture;
+  final String? title;
 
   const BestSellerEntity({
     required this.id,

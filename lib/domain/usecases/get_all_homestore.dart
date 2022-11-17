@@ -11,6 +11,6 @@ class GetAllHomeStoreUseCases extends UseCase<List<HomeStoreEntity>, void> {
   // для передачя данных в UI
   @override
   Future<Either<Failure, List<HomeStoreEntity>>> call({void params}) async {
-    return await homeStoreRepository.getHomeStore();
+    return await homeStoreRepository.getHomeStore()!;
   }
 }

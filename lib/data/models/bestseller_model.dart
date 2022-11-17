@@ -10,12 +10,12 @@ part 'bestseller_model.g.dart';
 class BestSellerModel extends BestSellerEntity {
 
   const BestSellerModel({
-    required int id,
-    required bool isFavorites,
-    required int priceWithoutDiscount,
-    required int discountPrice,
-    required String picture,
-    required String title,
+    required int? id,
+    required bool? isFavorites,
+    required int? priceWithoutDiscount,
+    required int? discountPrice,
+    required String? picture,
+    required String? title,
 }) : super(
     id: id,
     isFavorites: isFavorites,

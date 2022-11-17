@@ -10,8 +10,8 @@ part 'store_model.g.dart';
 class StoreModel extends StoreEntity {
 
   const StoreModel({
-    required List<HomeStoreModel> homeStore,
-    required List<BestSellerModel> bestSeller,
+    required List<HomeStoreModel>? homeStore,
+    required List<BestSellerModel>? bestSeller,
 }) : super(
     homeStore: homeStore,
     bestSeller: bestSeller,
