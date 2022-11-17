@@ -42,9 +42,9 @@ class _HotSalesCarouselWidgetState extends State<HotSalesCarouselWidget> {
               viewportFraction: 1,
             ),
             itemBuilder: (BuildContext context, int index, _) => SliderWidget(
-              pictureUrl: state.loadedHomestore[index].picture,
-              titlePhone: state.loadedHomestore[index].title,
-              subtitleSuper: state.loadedHomestore[index].subtitle,
+              pictureUrl: state.loadedHomestore[index].picture!,
+              titlePhone: state.loadedHomestore[index].title!,
+              subtitleSuper: state.loadedHomestore[index].subtitle!,
               isNew: state.loadedHomestore[index].isNew ?? false,
             ),
           );

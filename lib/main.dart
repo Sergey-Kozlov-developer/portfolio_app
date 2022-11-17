@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portfolio_app/locator_service.dart';
+import 'package:portfolio_app/locator_service.dart' as depinjections;
 import 'package:portfolio_app/presentation/home_page/bloc/home_bloc.dart';
 import 'package:portfolio_app/presentation/home_page/view/home_page.dart';
+
+import 'locator_service.dart';
 
 class PostHttpOverrides extends HttpOverrides {
   @override
@@ -15,7 +17,9 @@ class PostHttpOverrides extends HttpOverrides {
   }
 }
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await depinjections.initializeDependencies();
   HttpOverrides.global = PostHttpOverrides();
   runApp(const MyApp());
 }
