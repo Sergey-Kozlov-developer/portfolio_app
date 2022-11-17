@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:portfolio_app/presentation/home_page/model/best_seller.dart';
-import 'package:portfolio_app/presentation/home_page/model/home_store.dart';
+import 'package:portfolio_app/data/models/bestseller_model.dart';
+import 'package:portfolio_app/data/models/homestore_model.dart';
 
 class StoreEntity extends Equatable {
-  final List<HomeStoreList> homeStore;
-  final List<BestSellerList> bestSeller;
+  final List<HomeStoreModel> homeStore;
+  final List<BestSellerModel> bestSeller;
 
   const StoreEntity({
     required this.homeStore,
