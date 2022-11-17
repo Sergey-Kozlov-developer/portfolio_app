@@ -24,7 +24,7 @@ class StoreLoadingState extends StoreState {
 class StoreLoadedState extends StoreState {
   final List<HomeStoreList> loadedHomeStore;
   final List<BestSellerList> loadedBestseller;
-  final List<StoreEntities> loadedStore;
+  final List<StoreEntity> loadedStore;
 
   const StoreLoadedState({
     required this.loadedHomeStore,
