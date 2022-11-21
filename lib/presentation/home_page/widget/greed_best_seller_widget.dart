@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_app/presentation/home_page/bloc/home_bloc.dart';
+import 'package:portfolio_app/presentation/product_detail/view/product_details_page.dart';
 import 'package:portfolio_app/resources/app_colors.dart';
 
 class GreedBestSellerWidget extends StatefulWidget {
@@ -15,7 +16,7 @@ class _GreedBestSellerWidgetState extends State<GreedBestSellerWidget> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 138) / 2;
-    final double itemWidth = size.width / 1.5;
+    final double itemWidth = size.width / 2.1;
     return BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
       if (state is HomeLoadingState) {
         return const Center(child: CircularProgressIndicator());
@@ -80,10 +81,10 @@ class GridWidget extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => const ProductDetailsPage()),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ProductDetailsPage()),
+            );
           },
           child: Stack(alignment: Alignment.topCenter, children: [
             SizedBox(
