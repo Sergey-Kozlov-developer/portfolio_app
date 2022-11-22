@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_app/locator_service.dart' as depinjections;
 import 'package:portfolio_app/presentation/home_page/bloc/home_bloc.dart';
 import 'package:portfolio_app/presentation/home_page/view/home_page.dart';
+import 'package:portfolio_app/presentation/product_detail/bloc/product_bloc.dart';
 
 import 'locator_service.dart';
 
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<HomeBloc>(
           create: (context) => sl<HomeBloc>()..add(const HomeLoadEvent()),
+        ),
+        BlocProvider<ProductBloc>(
+          create: (context) => sl<ProductBloc>()..add(const ProductLoadEvent()),
         ),
       ],
       child: MaterialApp(
