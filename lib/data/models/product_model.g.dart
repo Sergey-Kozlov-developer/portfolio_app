@@ -8,21 +8,21 @@ part of 'product_model.dart';
 
 ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
       cpu: json['CPU'] as String?,
-      camera: json['camera'] as String?,
+      camera: json['camera'],
       capacity: (json['capacity'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       color:
           (json['color'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      id: json['id'] as int?,
+      id: json['id'],
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      isFavorites: json['isFavorites'] as bool?,
-      price: json['price'] as int?,
-      rating: (json['rating'] as num?)?.toDouble(),
-      sd: json['sd'] as String?,
-      ssd: json['ssd'] as String?,
-      title: json['title'] as String?,
+      isFavorites: json['isFavorites'],
+      price: json['price'],
+      rating: json['rating'],
+      sd: json['sd'],
+      ssd: json['ssd'],
+      title: json['title'],
     );
 
 Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>

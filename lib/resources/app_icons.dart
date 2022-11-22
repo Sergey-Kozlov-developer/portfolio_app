@@ -10,5 +10,6 @@ class AppIcons {
   static const profile = 'assets/icons/profile.png';
   static const shopping = 'assets/icons/shopping.png';
   static const circle = 'assets/icons/circle.png';
+  static const shop = 'assets/icons/shop.png';
 
 }

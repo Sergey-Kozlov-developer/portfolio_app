@@ -5,7 +5,7 @@ class ProductEntity extends Equatable {
   final String? camera;
   final List<String>? capacity;
   final List<String>? color;
-  final int? id;
+  final String? id;
   final List<String>? images;
   final bool? isFavorites;
   final int? price;

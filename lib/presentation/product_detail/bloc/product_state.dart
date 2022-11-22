@@ -11,8 +11,8 @@ class ProductLoadingState extends ProductState {
 }
 
 class ProductLoadedState extends ProductState {
-  List<ProductEntity> loadedProduct;
-  ProductLoadedState({
+  final List<ProductEntity> loadedProduct;
+  const ProductLoadedState({
     required this.loadedProduct,
   });
 
