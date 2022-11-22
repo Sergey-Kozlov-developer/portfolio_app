@@ -5,6 +5,7 @@ import 'package:portfolio_app/data/repositories/home_repository_impl.dart';
 import 'package:portfolio_app/data/repositories/product_repository_impl.dart';
 import 'package:portfolio_app/domain/repositories/home_repository.dart';
 import 'package:portfolio_app/domain/repositories/product_repository.dart';
+import 'package:portfolio_app/domain/usecases/get_all_product.dart';
 import 'package:portfolio_app/domain/usecases/get_all_store.dart';
 import 'package:portfolio_app/presentation/home_page/bloc/home_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -19,7 +20,7 @@ Future<void> initializeDependencies() async {
 
   sl.registerLazySingleton(() => GetAllStoreUseCases(sl()));
   // injection.registerLazySingleton(() => GetAllCartsUseCase(injection()));
-  // injection.registerLazySingleton(() => GetAllProductUseCase(injection()));
+  sl.registerLazySingleton(() => GetAllProductUseCase(sl()));
 
   sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(homeRemoteDataSource: sl()));
   // injection.registerLazySingleton<CartRepository>(() => CartRepositoryImpl(cartRemoteDataSource: injection()));
