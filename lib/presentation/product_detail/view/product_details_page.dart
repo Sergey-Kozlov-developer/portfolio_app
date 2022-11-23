@@ -7,9 +7,16 @@ import 'package:portfolio_app/resources/app_colors.dart';
 import 'package:portfolio_app/resources/app_icons.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class ProductDetailsPage extends StatelessWidget {
+import '../widget/shop_bar_widget.dart';
+
+class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({Key? key}) : super(key: key);
 
+  @override
+  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
+}
+
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +30,7 @@ class ProductDetailsPage extends StatelessWidget {
           if (state is ProductLoadedState) {
             return SingleChildScrollView(
               child: Column(
+                // mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
@@ -78,7 +86,7 @@ class ProductDetailsPage extends StatelessWidget {
                   const ProductSliderWidget(),
                   const SizedBox(height: 5),
                   Container(
-                    height: 400,
+                    height: 440,
                     width: double.maxFinite,
                     decoration: const BoxDecoration(
                       color: Colors.white,
@@ -138,10 +146,13 @@ class ProductDetailsPage extends StatelessWidget {
                             ),
                             onRatingUpdate: (rating) {},
                           ),
+                          const SizedBox(height: 15),
+                          ShopBarWidget(),
                         ],
                       ),
                     ),
                   ),
+
                 ],
               ),
             );

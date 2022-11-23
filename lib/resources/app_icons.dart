@@ -11,5 +11,9 @@ class AppIcons {
   static const shopping = 'assets/icons/shopping.png';
   static const circle = 'assets/icons/circle.png';
   static const shop = 'assets/icons/shop.png';
+  static const cpu = 'assets/icons/cpu.png';
+  static const camera = 'assets/icons/camera.png';
+  static const ram = 'assets/icons/ram.png';
+  static const ssd = 'assets/icons/ssd.png';
 
 }
