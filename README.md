@@ -1,16 +1,17 @@
-# portfolio_app
+# E-commerce Shop
+The project is still being completed.
 
-Ecommerce portfolio application
+The project is an online store. 
 
-## Getting Started
+## Technologies that are involved:
+- Dart
+- Flutter
+- Clean Architecture (Domain, Data and Presentation layers)
+- Dependency Injection, GetIt
+- http, JsonSerializable
+- Equatable
+- Flutter Bloc
+- Git
 
-This project is a starting point for a Flutter application.
+![alt text](https://firebasestorage.googleapis.com/v0/b/mis-work-6cfa3.appspot.com/o/photo_2022-11-23_17-30-43.jpg?alt=media&token=bf9f6228-d481-400a-b3c2-c877d22991e4)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
